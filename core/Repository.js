@@ -20,13 +20,17 @@ class Repository {
         return this.model.update({ _id: id }, { $set: record });
     }
 
+    count(conditions = {}) { 
+        return this.model.countDocuments(conditions).exec();
+    }
+
     find(conditions, populate, sort, select) {
         const query = this.model.findOne(conditions);
         Util.query(query, populate, sort, select);
         return query.exec();
     }
 
-    findAll(conditions, populate, sort, select) {
+    findAll(conditions = {}, populate, sort, select) {
         const query = this.model.findOne(conditions);
         Util.query(query, populate, sort, select);
         return query.exec();
