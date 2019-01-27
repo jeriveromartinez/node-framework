@@ -13,5 +13,10 @@
     "template"
   ],
   "author": "J3RM",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.7"
+  }
 }

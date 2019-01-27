@@ -1,11 +1,24 @@
 const express = require('express');
-const app = express();
-const port = Number(process.env.NODE_PORT || 3000);
+const { cwd } = process;
 
-app.use(express.urlencoded());
-app.use(express.json());
-app.use(express.static(__dirname + '/web'));
+class Server {
+    constructor() {
+        this.app = express();
+        this.port = Number(process.env.NODE_PORT || 3000);
+        this.load();
+    }
 
-app.listen(port, () => {
-    console.log(`listen on port ${port}`);
-});
+    load() {
+        this.app.use(express.urlencoded());
+        this.app.use(express.json());
+        this.app.use(express.static(`${cwd()}/web`));
+    }
+
+    run() {
+        this.app.listen(this.port, () => {
+            console.log(`listen on port ${this.port}`);
+        });
+    }
+}
+
+module.exports = Server;
