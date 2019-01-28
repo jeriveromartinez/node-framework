@@ -24,7 +24,7 @@ class DB {
                 if (intent <= intentLimit) {
                     intent++;
                     mongoose.connect(DB.getDb(), DB.options());
-                } else console.log('Limit intent connections.');
+                } else console.log('Limit intent connections. Please check database connection.');
             });
 
             mongoose.connect(DB.getDb(), DB.options());
