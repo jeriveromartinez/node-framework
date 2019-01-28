@@ -1,9 +1,7 @@
-class UserModel { 
+const MainModel = require('../../core/BaseModel');
+class UserModel extends MainModel { 
     constructor($mongoose) {
-        this.mongoose = $mongoose;
-        this.Schema = this.mongoose.Schema;
-
-        return this.mongoose.model('User', this.load());
+        return super($mongoose, 'User');
     }
 
     load() { 
