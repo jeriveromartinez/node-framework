@@ -9,7 +9,7 @@ class Server {
     }
 
     load() {
-        this.app.use(express.urlencoded());
+        this.app.use(express.urlencoded({extended: true}));
         this.app.use(express.json());
         this.app.use(express.static(`${cwd()}/web`));
     }
