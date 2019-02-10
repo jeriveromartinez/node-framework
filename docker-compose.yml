@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+    web_app:
+        container_name: web_app.dev
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            NODE_PORT: "8080"
+        volumes:
+        - ./:/opt/web
+        - /opt/web/node_modules
+        ports:
+        - "8080:8080"
+        entrypoint: ["npm", "start"]

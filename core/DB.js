@@ -11,7 +11,7 @@ class DB {
             mongoseDB.on('connecting', () => console.log('connecting to MongoDB...'));
             mongoseDB.on('error', (error) => {
                 mongoose.disconnect();
-                reject(`Error in MongoDb connection: ${error}`)
+                reject(`Error in MongoDb connection: ${error}`);
             });
             mongoseDB.on('connected', () => {
                 console.log('MongoDB connected!');
