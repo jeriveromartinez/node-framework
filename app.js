@@ -1,11 +1,20 @@
+const router = require('./src/Routes/loader');
+const models = require('./src/Models/loader');
+const Server = require('./core/Server');
+
 global.config = require('./config.json');
 
-require('./core/DB').connect()
-    .then(mongoose => {
-        const ModelLoader = new(require('./src/Models/loader'))(mongoose);
-        global.db = ModelLoader.load();
-        const server = new(require('./core/Server'))();
-        require('./src/Routes/loader').load(server.app);
+const run = async function () {
+    try {
+        const mongoose = await require('./core/DB').connect();
+        const server = new Server();
+
+        global.db = new models(mongoose).load();
+        router.load(server.app);
         server.run();
-    })
-    .catch(error => console.log(error.message));
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+run();
