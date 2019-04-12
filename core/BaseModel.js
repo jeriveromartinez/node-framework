@@ -1,4 +1,8 @@
 class BaseModel {
+    /**
+     * @param {Mongoose} $mongoose 
+     * @param {string} name 
+     */
     constructor($mongoose, name) {
         this.mongoose = $mongoose;
         this.Schema = this.mongoose.Schema;

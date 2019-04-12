@@ -1,7 +1,6 @@
 class Loader {
     static load($app) {
-        new (require('../Controllers/MainController'))($app).Routes('/');
-        new (require('../Controllers/UserController'))($app).Routes('/user');
+        new (require('../Controllers/UserController'))($app).Routes('/');
     }
 }
 
